@@ -5,3 +5,12 @@
 .reloj{
     font-size:100px
 }
+
+.list-group-item .btn-close {
+    visibility:hidden;
+}
+
+.list-group-item:hover .btn-close {
+    color:red;
+    visibility:visible;
+}

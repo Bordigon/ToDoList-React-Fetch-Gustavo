@@ -108,6 +108,12 @@ export default function Tareas (){
         setUpdate(update+1);   
     }
 
+    const handleChangeUser = ()=>{
+        setUser("");
+        setUpdate(update+1);
+        setTaskList([]);
+    }
+
     return (
     <div className="text-center">
         <h1 className="px-3">ToDoList con fetch </h1>{inicio()}
@@ -134,6 +140,7 @@ export default function Tareas (){
                 </div>
             <button className="btn btn-primary m-3" onClick={deletingAll}>clear</button>
             <button className="btn btn-danger m-3" onClick={handleDeleteUser}>delete user</button>
+            <button className="btn btn-success m-3" onClick={handleChangeUser}>change user</button>
         </div>
     </div>
 )}
