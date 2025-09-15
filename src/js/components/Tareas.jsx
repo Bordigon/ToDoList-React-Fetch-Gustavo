@@ -7,12 +7,7 @@ export default function Tareas (){
     const [tarea, setTarea] = useState("");
     const [update, setUpdate] = useState(1);
     const [taskList, setTaskList] = useState([]);
-    const [userList, setUserList] = useState([]);
 
-    const updateUserList = async ()=>{
-        const data = await getUsers();
-        setUserList(data);
-    }
 
     const updateData = async ()=>{
         //Llamar a la API con todo.service
@@ -29,15 +24,15 @@ export default function Tareas (){
     },[update])
 
     const handleAddUser = async (e)=>{
-        if(e.key==="Enter"){
             const user_name = e.target.value;
-            updateUserList();
-            let existe = false;
-            for(let t = 0; t<userList.length;t++){
-                if(userList[t].name===user_name)
-                    existe = true;
+            const list = await getUsers();
+            let existe = "false";
+            for(let t = 0; t<list.length;t++){
+                if(list[t].name===user_name)
+                    existe = "true";
             }
-            if(existe===false){
+
+            if(existe==="false"){
                 const add = await addUser(user_name);
                 setUser(user_name);
             }
@@ -45,10 +40,8 @@ export default function Tareas (){
                 setUser(user_name);
             }
             setTarea("")
-        }
+        
         setUpdate(update+1)
-        //recargo manualmente la lista de usuarios para que si o si, se renderice el componente por el cambio en usuarios
-        const add = await updateUserList()
     }
 
     const handleAddTask = async (e)=>{
