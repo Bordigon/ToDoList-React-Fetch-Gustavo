@@ -48,7 +48,7 @@ export default function Tareas (){
         }
         setUpdate(update+1)
         //recargo manualmente la lista de usuarios para que si o si, se renderice el componente por el cambio en usuarios
-        const add = await userList()
+        const add = await updateUserList()
     }
 
     const handleAddTask = async (e)=>{
